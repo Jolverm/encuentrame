@@ -11,6 +11,10 @@ nav .brand-logo {
   color: #444;
 }
 
+.brand-logo img{
+  padding-top: 7px;
+}
+
 p {
   line-height: 2rem;
 }
@@ -34,7 +38,10 @@ p {
       text-shadow: 0px 1px #0288d1;
 }
 
-
+.sombra-light {
+    text-shadow: 0px -1px #fff;
+    color: #1a237e;
+}
 
 nav ul a {
     color: #fff;
