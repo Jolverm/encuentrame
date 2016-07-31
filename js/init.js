@@ -31,8 +31,15 @@ function generateUUID() {
 function dataParser() {
 var data = $("#reporte").serialize();
 data += '&imagen=' + image;
-var parseado = JSON.parse('{"' + decodeURI(data).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-writeUserData(parseado,generateUUID());
+var jsonfy = {};
+data = data.split('&');
+$.each(data, function(index, value){
+  var v = value.split('=');
+  jsonfy[v[0]] = v[1];
+});
+
+//var parseado = JSON.parse('{"' + decodeURI(data).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+writeUserData(jsonfy,generateUUID());
 
 }
 
