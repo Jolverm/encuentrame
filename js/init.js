@@ -20,7 +20,9 @@ firebase.initializeApp(config);
 // genera ID unico
 function generateUUID() {
   var d = new Date().getTime();
-  var uuid = 'xxshxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+
+  var uuid = d;
+  uuid += '-xxshxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     var r = (d + Math.random()*16)%16 | 0;
     d = Math.floor(d/16);
     return (c=='x' ? r : (r&0x3|0x8)).toString(16);
@@ -66,13 +68,52 @@ $('#inp').on('change',function(){
 
 
 function writeUserData(data, generateUUID) {
+  data['UUID'] = generateUUID;
   firebase.database().ref('report/' + generateUUID).set(data);
+  e_fb_login(data);
+}
+
+function e_fb_post(data){
+  FB.api(
+    "feed",
+    //"1141925455845640/feed",
+    "POST",
+    {
+      "message": "This is a test message: " + data.nombre
+    },
+    function (response) {
+      if (response && !response.error) {
+        /* handle the result */
+
+
+        var fr = firebase.database().ref('report/' + data.UUID).update({"fb_id": response.id});
+
+      } else {
+
+      }
+    }
+  );
+}
+
+function e_fb_login(data) {
+  FB.login(function(response) {
+    if (response.authResponse) {
+      var access_token =   FB.getAuthResponse()['accessToken'];
+
+      FB.api('/me', function(response) {
+
+        e_fb_post(data);
+      });
+    } else {
+
+    }
+  }, {scope: 'manage_pages,publish_pages,publish_actions'});
 }
 
 function getReportById(id){
   firebase.database().ref('report/' + id).on('value', function(snapshot) {
     var snap = snapshot.val();
-    console.log(snap);
+
     $('#nombre').html(clean_string(snap.nombre));
     if( snap.imagen != null && snap.imagen != '' ) {
       $('#foto').html('<img class="col s12" src="' + snap.imagen + '" alt="">');
