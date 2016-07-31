@@ -29,13 +29,13 @@
 
   <div class="container">
     <div class="section">
-      
-    <form class="col s12" id="reporte">
+
+      <form class="col s12" id="reporte" enctype="multipart/form-data">
         <div class="row">
           <div class="input-field col s4">
             <input name="nombre" type="text" class="validate">
             <label for="nombre">Nombre Completo</label>
-          </div>   
+          </div>
           <div class="input-field col s4">
             <select name="sexo" id="sexo">
               <option value="" disabled selected>Sexo</option>
@@ -43,9 +43,23 @@
               <option value="femenino">Femenino</option>
             </select>
           </div>
-           <div class="input-field col s4">
+          <div class="input-field col s4">
             <input  name="edad" type="text" class="validate">
             <label for="edad">Edad</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>File</span>
+                <input id="inp" name="inp" type='file'>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
           </div>
         </div>
 
@@ -60,17 +74,17 @@
               <option value="delgada">Delgada</option>
               <option value="media">Media</option>
               <option value="robusta">Robusta</option>
-          </select>
-          </div>
-          <div class="input-field col s4">
-             <select name="cara" id="cara">
-                <option value="" disabled selected>Tipo de cara</option>
-                <option value="redonda">Redonda</option>
-                <option value="cuadrada">Cuadrada</option>
-                <option value="ovalada">Ovalada</option>
             </select>
           </div>
-        </div>  
+          <div class="input-field col s4">
+            <select name="cara" id="cara">
+              <option value="" disabled selected>Tipo de cara</option>
+              <option value="redonda">Redonda</option>
+              <option value="cuadrada">Cuadrada</option>
+              <option value="ovalada">Ovalada</option>
+            </select>
+          </div>
+        </div>
 
         <div class="row">
           <div class="input-field col s4">
@@ -93,17 +107,17 @@
             <label for="nariz">Nariz</label>
           </div>
           <div class="input-field col s4">
-              <input name="boca" type="text" class="validate">
-              <label for="boca">Boca</label>
+            <input name="boca" type="text" class="validate">
+            <label for="boca">Boca</label>
           </div>
           <div class="input-field col s4">
-              <select name="tez" id="tez">
-                <option value="" disabled selected>Tez</option>
-                <option value="redonda">Clara</option>
-                <option value="cuadrada">Morena clara</option>
-                <option value="ovalada">Morena</option>
-              </select>
-          </div>    
+            <select name="tez" id="tez">
+              <option value="" disabled selected>Tez</option>
+              <option value="redonda">Clara</option>
+              <option value="cuadrada">Morena clara</option>
+              <option value="ovalada">Morena</option>
+            </select>
+          </div>
         </div>
 
         <div class="row">
@@ -114,30 +128,39 @@
         </div>
 
         <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field col s12">
             <input name="lugar" type="text" class="validate">
             <label for="lugar">Lugar de extravio</label>
           </div>
-          <div class="input-field col s6">
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
             <input name="hechos" type="text" class="validate">
             <label for="hechos">Descripcion de los hechos</label>
-          </div>  
+          </div>
         </div>
-        
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input name="correo" type="email" class="validate">
+            <label for="correo">Correo de quién reporta</label>
+          </div>
+        </div>
+
         <div class="row">
           <a hrer="javascript:void(0);" class="btn waves-effect waves-light" onCLick="dataParser()">Enviar
             <i class="material-icons right">send</i>
           </a>
         </div>
 
-    </form>
-  
-      
+      </form>
+
+
     </div>
   </div>
 
 
-    <footer class="page-footer teal">
+  <footer class="page-footer teal">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
@@ -168,7 +191,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
       </div>
     </div>
   </footer>
@@ -180,5 +203,5 @@
   <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
   <script src="js/init.js"></script>
 
-  </body>
+</body>
 </html>
