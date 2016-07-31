@@ -72,10 +72,47 @@ function writeUserData(data, generateUUID) {
 function getReportById(id){
   firebase.database().ref('report/' + id).on('value', function(snapshot) {
     var snap = snapshot.val();
-    var nombre = snap.nombre;
-    nombre = nombre.replace(/\+/g, ' ');
-    alert(nombre);
-    //$('#userName').html(nombre);
+    console.log(snap);
+    $('#nombre').html(clean_string(snap.nombre));
+    if( snap.imagen != null && snap.imagen != '' ) {
+      $('#foto').html('<img class="col s12" src="' + snap.imagen + '" alt="">');
+    }
+    if( snap.edad != null && snap.edad != '' ) {
+      $('#datos-principales').append('<tr><td><strong>Edad</strong></td><td>' + snap.edad + '</td></tr>');
+    }
+    if( snap.sexo != null && snap.sexo != '' ) {
+      $('#datos-principales').append('<tr><td><strong>Sexo</strong></td><td>' + snap.sexo + '</td></tr>');
+    }
+    if( snap.estatura != null && snap.estatura != '' ) {
+      $('#datos-principales').append('<tr><td><strong>Estatura</strong></td><td>' + snap.estatura + '</td></tr>');
+    }
+    if( snap.cabello != null && snap.cabello != '' ) {
+      $('#datos-principales').append('<tr><td><strong>Cabello</strong></td><td>' + clean_string(snap.cabello) + '</td></tr>');
+    }
+    if( snap.cejas != null && snap.cejas != '' ) {
+      $('#datos-principales').append('<tr><td><strong>Cejas</strong></td><td>' + clean_string(snap.cejas) + '</td></tr>');
+    }
+    if( snap.ojos != null && snap.ojos != '' ) {
+      $('#datos-principales').append('<tr><td><strong>Ojos</strong></td><td>' + clean_string(snap.ojos) + '</td></tr>');
+    }
+    if( snap.naris != null && snap.naris != '' ) {
+      $('#datos-principales').append('<tr><td><strong>Naris</strong></td><td>' + clean_string(snap.naris) + '</td></tr>');
+    }
+    if( snap.boca != null && snap.boca != '' ) {
+      $('#datos-principales').append('<tr><td><strong>Boca</strong></td><td>' + clean_string(snap.boca) + '</td></tr>');
+    }
+    if( snap.tez != null && snap.tez != '') {
+      $('#datos-principales').append('<tr><td><strong>Tez</strong></td><td>' + clean_string(snap.tez) + '</td></tr>');
+    }
+    if( snap.senas != null && snap.senas != '') {
+      $('#datos-hechos').append('<tr><td><strong>Señas particulares</strong></td><td>' + clean_string(snap.senas) + '</td></tr>');
+    }
+    if( snap.lugar != null && snap.lugar != '') {
+      $('#datos-hechos').append('<tr><td><strong>Lugar de los hechos</strong></td><td>' + clean_string(snap.lugar) + '</td></tr>');
+    }
+    if( snap.hechos != null && snap.hechos != '') {
+      $('#datos-hechos').append('<tr><td><strong>Descripción de los hechos</strong></td><td>' + clean_string(snap.hechos) + '</td></tr>');
+    }
   });
 }
 
@@ -102,10 +139,10 @@ function getReport() {
       card += '<div class="card-stacked">';
       card += '<div class="card-content">';
       card += '<p><strong>Nombre:</strong> ' + clean_string(value.nombre) + '</p>';
-      if( value.fecha ){
+      if( value.fecha ) {
         card += '<p><strong>Fecha:</strong> ' + clean_string(value.fecha)+ '</p>';
       }
-      if( value.lugar ){
+      if( value.lugar ) {
         card += '<p><strong>Lugar:</strong>' + clean_string(value.lugar)+ '</p>';
       }
       card += "<p><a href=\"javascript:void(0);\" onclick=\"save_report('" + index + "')\">Ver detalles</a></p>";
