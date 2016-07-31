@@ -31,8 +31,8 @@ function generateUUID() {
 function dataParser() {
 var data = $("#reporte").serialize();
 data += '&imagen=' + image;
-var parsed_data = JSON.parse('{"' + decodeURI(data).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
-writeUserData(parsed_data,generateUUID());
+var parseado = JSON.parse('{"' + decodeURI(data).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+writeUserData(parseado,generateUUID());
 
 }
 
