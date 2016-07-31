@@ -50,10 +50,14 @@
         </div>
 
         <div class="row">
-          <div class="input-field col s12">
+         <div class="input-field col s6">
+            <input name="fecha" type="date" class="datepicker">
+            <label for="fecha">Fecha</label>
+          </div>
+          <div class="input-field col s6">
             <div class="file-field input-field">
               <div class="btn">
-                <span>File</span>
+                <span>Foto</span>
                 <input id="inp" name="inp" type='file'>
               </div>
               <div class="file-path-wrapper">
@@ -140,13 +144,17 @@
           </div>
         </div>
 
-        <div class="row">
+         <div class="row">
+          <div class="input-field col s6">
+            <input name="alerto" type="text" class="validate">
+            <label for="alerto">Nombre de quien reporta</label>
+          </div>
           <div class="input-field col s6">
             <input name="correo" type="email" class="validate">
             <label for="correo">Correo de quién reporta</label>
           </div>
         </div>
-
+       
         <div class="row">
           <a hrer="javascript:void(0);" class="btn waves-effect waves-light" onCLick="dataParser()">Enviar
             <i class="material-icons right">send</i>
@@ -181,6 +189,27 @@
   <script src="js/materialize.js"></script>
   <script src="js/firebase.js"></script>
   <script src="js/init.js"></script>
+
+
+<script>
+    $('.datepicker').pickadate({
+        labelMonthNext: 'Mes siguiente',
+        labelMonthPrev: 'Mes anterior',
+        labelMonthSelect: 'Elige un mes',
+        labelYearSelect: 'Elige un año',
+        monthsFull: [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octobre', 'Noviembre', 'Diciembre' ],
+        monthsShort: [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+        weekdaysFull: [ 'Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado' ],
+        weekdaysShort: [ 'Dom', 'Lun', 'Mar', 'Mier', 'Jue', 'Vie', 'Sab' ],
+        weekdaysLetter: [ 'D', 'L', 'M', 'M', 'J', 'V', 'S' ],
+        today: 'Hoy',
+        clear: 'Borrar',
+        close: 'Cerrar',
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+      });
+      
+</script>
 
   </body>
 </html>
