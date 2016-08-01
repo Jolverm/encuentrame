@@ -164,6 +164,8 @@ function getReport() {
     var card = '';
     var i = 0;
 
+    alert('Alerta, persona desaparecida');
+
     $.each(snap, function(index, value){
       if(i == 0){
         card += '<div class="row">';
@@ -171,14 +173,14 @@ function getReport() {
       card += '<div class="col s6">';
       card += '<div class="card horizontal">';
       card += '<div class="card-image">';
-      
+
       if( value.imagen != 'null' && value.imagen != '' ){
         card += '<img src="' + value.imagen + '">';
       } else {
         card += '<img src="assets/no-photo.png">';
       }
-      
-      
+
+
       card += '</div>';
       card += '<div class="card-stacked">';
       card += '<div class="card-content">';
@@ -191,7 +193,7 @@ function getReport() {
       }
       card += "<p><a href=\"javascript:void(0);\" onclick=\"save_report('" + index + "')\">Ver detalles</a></p>";
       card += '<div class="fb-share-button" data-href="http://shannonbit.dev/encuentrame/listado.html" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fshannonbit.dev%2Fencuentrame%2Flistado.html&amp;src=sdkpreparse"><img src="assets/fb.png" alt=""></a></div>';
-     
+
       card += '</div>';
       card += '</div>';
       card += '</div>';
